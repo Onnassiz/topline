@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_090048) do
+ActiveRecord::Schema.define(version: 2019_03_08_092423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 2019_03_08_090048) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shirt_colors", force: :cascade do |t|
+    t.bigint "shirt_id"
+    t.bigint "color_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_shirt_colors_on_color_id"
+    t.index ["shirt_id"], name: "index_shirt_colors_on_shirt_id"
+  end
+
+  create_table "shirt_sizes", force: :cascade do |t|
+    t.bigint "shirt_id"
+    t.bigint "size_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shirt_id"], name: "index_shirt_sizes_on_shirt_id"
+    t.index ["size_id"], name: "index_shirt_sizes_on_size_id"
   end
 
   create_table "shirts", force: :cascade do |t|
@@ -44,5 +62,9 @@ ActiveRecord::Schema.define(version: 2019_03_08_090048) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "shirt_colors", "colors"
+  add_foreign_key "shirt_colors", "shirts"
+  add_foreign_key "shirt_sizes", "shirts"
+  add_foreign_key "shirt_sizes", "sizes"
   add_foreign_key "shirts", "brands"
 end
