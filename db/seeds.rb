@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+brand_data = Array.new(10) {
+  { name: Faker::Company.name, country: Faker::Address.country }
+}
+
+Brand.create(brand_data) if Brand.count.zero?
