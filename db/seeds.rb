@@ -11,3 +11,7 @@ brand_data = Array.new(10) {
 }
 
 Brand.create(brand_data) if Brand.count.zero?
+
+sizes = %w(XM SM M L XL 2XL 3XL).map { |size| { size: size } }
+
+Size.create(sizes) if Size.count.zero?
