@@ -15,3 +15,7 @@ Brand.create(brand_data) if Brand.count.zero?
 sizes = %w(XM SM M L XL 2XL 3XL).map { |size| { size: size } }
 
 Size.create(sizes) if Size.count.zero?
+
+colors = Array.new(10) { { color: Faker::Color.hex_color } }
+
+Color.create(colors) if Color.count.zero?
