@@ -19,3 +19,27 @@ Size.create(sizes) if Size.count.zero?
 colors = Array.new(10) { { color: Faker::Color.hex_color } }
 
 Color.create(colors) if Color.count.zero?
+
+if Shirt.count.zero?
+  100.times do |n|
+    brand_id = rand(1...10)
+    size_max = rand(1..7)
+    shirt = {
+      name: Faker::Commerce.product_name,
+      price: Faker::Commerce.price,
+      in_stock: [true, false].sample,
+      brand_id: brand_id,
+    }
+
+    Shirt.create(shirt)
+
+    color_ids = (1..10).to_a.sort { rand - 0.5 }[0..brand_id]
+    shirts_colors = color_ids.map { |k| { shirt_id: n + 1, color_id: k } }
+
+    size_ids = (1..7).to_a.sort { rand - 0.5 }[0..size_max]
+    shirts_sizes = size_ids.map { |k| { shirt_id: n + 1, size_id: k } }
+
+    ShirtColor.create(shirts_colors)
+    ShirtSize.create(shirts_sizes)
+  end
+end
