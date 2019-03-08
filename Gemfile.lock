@@ -56,6 +56,10 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.3)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     listen (3.1.5)
@@ -154,6 +158,8 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   faker (~> 1.9.3)
+  graphiql-rails (~> 1.7.0)
+  graphql (~> 1.9.3)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
