@@ -43,3 +43,25 @@ if Shirt.count.zero?
     ShirtSize.create(shirts_sizes)
   end
 end
+
+image_links = [
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282463/Custom-Art-Samples-Maroon-1024x1024_cyvuq1.png",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282463/iSPA-04-800x1199_oylvqu.png",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282461/green_1024x1024_nifhlm.jpg",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282461/997101-Array_wa3p5g.jpg",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282461/sample-sale-mens-t-shirt-droogs-clockwork_q0plnp.jpg",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282461/samples-men-s-jersey-t-shirt_jdq3lb.webp",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282461/portland_sqgrn8.jpg",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282461/t-191_1377658736805_r0xlub.jpg",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282460/images_man_tdit6y.jpg",
+  "https://res.cloudinary.com/onnassiz/image/upload/v1552282706/we-shall-overcomb-white_980_heather-dark-grey_1024x1024_wbcues.jpg"
+]
+
+if Shirt.first.image_link.nil?
+  100.times do |n|
+    c = Shirt.find(n + 1);
+    c.image_link = image_links[rand(0..9)]
+    c.total_item = rand(5..100)
+    c.save
+  end
+end
